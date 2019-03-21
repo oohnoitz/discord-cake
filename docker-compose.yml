@@ -1,0 +1,23 @@
+version: '3.3'
+
+services:
+  bot:
+    container_name: discord-bot
+    build: .
+    env_file:
+      - .docker.env
+    environment:
+      - MONGO_URI=mongodb://database/discord
+    command: ['node', 'bot.js']
+    depends_on:
+      - database
+
+  database:
+    image: 'mongo:latest'
+    ports:
+      - '27017:27017'
+    volumes:
+      - 'mongo:/data/db'
+
+volumes:
+  mongo:
