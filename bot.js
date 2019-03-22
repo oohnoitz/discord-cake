@@ -1,7 +1,5 @@
-const { Client } = require('discord.js')
+const client = require('./client')
 const plugins = require('./lib/plugins')
-
-const client = new Client()
 
 client.on('ready', () => {
   // eslint-disable-next-line no-console
